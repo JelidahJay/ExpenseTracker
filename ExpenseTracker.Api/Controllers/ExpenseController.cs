@@ -81,10 +81,10 @@ namespace ExpenseTracker.Api.Controllers
                 if (!ModelState.IsValid)
                     return StatusCode(StatusCodes.Status400BadRequest);
 
-                if (await IsAmountLessOrNot(expense.Amount))
+                if (IsAmountLessOrNot(expense.Amount))
                     return StatusCode(StatusCodes.Status400BadRequest);
 
-                if (await IsExpenseDatePastOrFuture(expense.ExpenseDate))
+                if (IsExpenseDatePastOrFuture(expense.ExpenseDate))
                     return StatusCode(StatusCodes.Status400BadRequest);
 
                 context.Expenses.Add(expense);
@@ -114,10 +114,10 @@ namespace ExpenseTracker.Api.Controllers
                 if (id != expense.ExpenseID)
                     return StatusCode(StatusCodes.Status404NotFound);
 
-                if (await IsAmountLessOrNot(expense.Amount))
+                if (IsAmountLessOrNot(expense.Amount))
                     return StatusCode(StatusCodes.Status400BadRequest);
 
-                if (await IsExpenseDatePastOrFuture(expense.ExpenseDate))
+                if (IsExpenseDatePastOrFuture(expense.ExpenseDate))
                     return StatusCode(StatusCodes.Status400BadRequest);
 
                 if (!ModelState.IsValid)
@@ -170,7 +170,7 @@ namespace ExpenseTracker.Api.Controllers
         /// </summary>
         /// <param name="ExpenseDate"></param>
         /// <returns></returns>
-        private async Task<bool> IsExpenseDatePastOrFuture(DateTime ExpenseDate)
+        private bool IsExpenseDatePastOrFuture(DateTime ExpenseDate)
         {
             try
             {
@@ -190,7 +190,7 @@ namespace ExpenseTracker.Api.Controllers
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
-        private async Task<bool> IsAmountLessOrNot(decimal amount)
+        private bool IsAmountLessOrNot(decimal amount)
         {
             try
             {
