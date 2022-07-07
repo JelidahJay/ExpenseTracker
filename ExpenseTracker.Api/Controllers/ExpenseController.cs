@@ -170,7 +170,7 @@ namespace ExpenseTracker.Api.Controllers
         /// </summary>
         /// <param name="ExpenseDate"></param>
         /// <returns></returns>
-        private bool IsExpenseDatePastOrFuture(DateTime ExpenseDate)
+        private static bool IsExpenseDatePastOrFuture(DateTime ExpenseDate)
         {
             try
             {
@@ -190,7 +190,7 @@ namespace ExpenseTracker.Api.Controllers
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
-        private bool IsAmountLessOrNot(decimal amount)
+        private static bool IsAmountLessOrNot(decimal amount)
         {
             try
             {
